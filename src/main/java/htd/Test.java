@@ -10,5 +10,6 @@ import htd.utils.Sout;
 public class Test {
     public static void main(String[] args) {
         Sout.d("TAG", "hhh");
+        Sout.d("TAG", "hhh");
     }
 }
