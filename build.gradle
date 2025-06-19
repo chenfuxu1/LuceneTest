@@ -10,5 +10,19 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation files('libs/mysql-connector-java-5.1.37-bin.jar')
+    implementation files('libs/analysis/common/lucene-analyzers-common-7.7.2.jar')
+    implementation files('libs/core/lucene-core-7.7.2.jar')
+    implementation files('libs/queryparser/lucene-queryparser-7.7.2.jar')
+
+    implementation files('libs/analysis/ik/ik-analyzer-8.1.0.jar')
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+}
+
+test {
+    useJUnitPlatform()
 }
