@@ -7,14 +7,18 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.IntPoint;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Project: LuceneTest
@@ -63,7 +67,8 @@ public class TestSearch {
     public static void main(String[] args) throws Exception {
         // testQueryParse();
         // testRangeQuery();
-        testHighIndexSearchTerm();
+        // testHighIndexSearchTerm();
+        testHighIndexSearchTerm2();
     }
 
     private static void testQueryParse() throws ParseException, IOException {
@@ -240,6 +245,69 @@ public class TestSearch {
                 // 可以获取lucene为文档分配的id, 文档的唯一标识符
                 int documentId = scoreDoc.doc;
                 // 通过文档id，找到文档，通过流对象，读出文档
+                Document document = indexSearcher.doc(documentId);
+                Sout.d(TAG, "========================");
+                // 通过域名，获取域值
+                Sout.d(TAG, "id: " + document.get("id") +
+                        "\tname: " + document.get("name") +
+                        "\tprice: " + document.get("price") +
+                        "\tnum: " + document.get("num") +
+                        "\tcategoryName: " + document.get("categoryName") +
+                        "\tbrandName: " + document.get("brandName"));
+            }
+        }
+        Sout.d(TAG, "search cost time: " + (System.currentTimeMillis() - start) + " ms" + " scoreDocs.length: " + scoreDocs.length);
+        // 8.释放资源，关闭流
+        indexReader.close();
+    }
+
+    /**
+     * 测试相关度排序
+     */
+    public static void testHighIndexSearchTerm2() throws Exception {
+        long start = System.currentTimeMillis();
+        Analyzer analyzer = new IKAnalyzer();
+        // 查询的多个域名
+        String[] fields = {"name", "brandName", "categoryName"};
+        // 设置权重
+        Map<String, Float> boots = new HashMap<>();
+        boots.put("categoryName", 10000000f);
+        /**
+         * 需求：
+         * 不管是名称域还是品牌域还是分类域，有关手机关键字都查出来
+         *
+         * 参数 1：域名数组
+         * 参数 2：分词器
+         * 参数 3：设置权重
+         */
+        // 从多个域查询对象
+        MultiFieldQueryParser multiFieldQueryParser = new MultiFieldQueryParser(fields, analyzer, boots);
+        // 设置查询的关键词
+        Query query = multiFieldQueryParser.parse("手机");
+
+        // 2.创建 Directory 目录对象，指定索引库的位置
+        Directory directory = FSDirectory.open(Paths.get(INDEX_LOCATION));
+        // 3.创建输入流对象
+        IndexReader indexReader = DirectoryReader.open(directory);
+        // 4.创建搜索对象
+        IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+        /**
+         * 5.执行搜素，并返回结果
+         * 参数 1：查询 query
+         * 参数 2：返回多少条数据
+         */
+        TopDocs topDocs = indexSearcher.search(query, 50);
+        // 获取到查询的结果集总数
+        long totalHits = topDocs.totalHits;
+        Sout.d(TAG, "============获取查询的总数：" + totalHits);
+        // 6.获取结果集
+        ScoreDoc[] scoreDocs = topDocs.scoreDocs;
+        // 7.遍历结果集
+        if (scoreDocs != null) {
+            for (ScoreDoc scoreDoc : scoreDocs) {
+                // 可以获取 lucene 为文档分配的 id, 文档的唯一标识符
+                int documentId = scoreDoc.doc;
+                // 通过文档 id，找到文档，通过流对象，读出文档
                 Document document = indexSearcher.doc(documentId);
                 Sout.d(TAG, "========================");
                 // 通过域名，获取域值

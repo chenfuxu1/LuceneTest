@@ -53,7 +53,7 @@ public class SkuDaoImpl implements SkuDao {
             e.printStackTrace();
         }
         Sout.d(TAG, " list.size() = " + list.size());
-        Sout.d(TAG, "cfx " + list.get(0));
+        // Sout.d(TAG, "cfx " + list.get(0));
         Sout.d(TAG, "cost time: " + (System.currentTimeMillis() - startTime) + " ms");
         return list;
     }

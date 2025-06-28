@@ -87,6 +87,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -99,17 +100,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.TestSearch">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestAnalyzer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="htd.test.TestAnalyzer" />
       <module name="LuceneTest.main" />
@@ -149,6 +139,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestIndexManager" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -167,9 +168,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="TestIndexManager.createIndexTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -190,9 +189,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -222,6 +219,7 @@
       <workItem from="1750691678939" duration="596000" />
       <workItem from="1750778026931" duration="1952000" />
       <workItem from="1750865818159" duration="540000" />
+      <workItem from="1751115333866" duration="3724000" />
     </task>
     <servers />
   </component>
@@ -238,5 +236,28 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1655" height="242" key="GridCell.Tab.0.bottom" timestamp="1751118790665">
+      <screen x="0" y="0" width="1707" height="1067" />
+    </state>
+    <state width="1655" height="242" key="GridCell.Tab.0.bottom/0.0.1707.1067@0.0.1707.1067" timestamp="1751118790665" />
+    <state width="1655" height="242" key="GridCell.Tab.0.center" timestamp="1751118790663">
+      <screen x="0" y="0" width="1707" height="1067" />
+    </state>
+    <state width="1655" height="242" key="GridCell.Tab.0.center/0.0.1707.1067@0.0.1707.1067" timestamp="1751118790663" />
+    <state width="1655" height="242" key="GridCell.Tab.0.left" timestamp="1751118790663">
+      <screen x="0" y="0" width="1707" height="1067" />
+    </state>
+    <state width="1655" height="242" key="GridCell.Tab.0.left/0.0.1707.1067@0.0.1707.1067" timestamp="1751118790663" />
+    <state width="1655" height="242" key="GridCell.Tab.0.right" timestamp="1751118790665">
+      <screen x="0" y="0" width="1707" height="1067" />
+    </state>
+    <state width="1655" height="242" key="GridCell.Tab.0.right/0.0.1707.1067@0.0.1707.1067" timestamp="1751118790665" />
+    <state x="246" y="92" key="SettingsEditor" timestamp="1751099550166">
+      <screen x="0" y="0" width="1707" height="1067" />
+    </state>
+    <state x="246" y="92" key="SettingsEditor/0.0.1707.1067@0.0.1707.1067" timestamp="1751099550166" />
   </component>
 </project>
